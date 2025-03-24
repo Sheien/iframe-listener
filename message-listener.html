@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iframe Message Listener</title>
+</head>
+<body>
+  <h3>✅ Iframe is running</h3>
+  <script>
+    window.addEventListener("message", function(event) {
+      console.log("📩 Message received:", event.data);
+
+      if (event.data && event.data.type === "DO_SOMETHING") {
+        console.log("🎯 Doing something inside the iframe!");
+      }
+    });
+
+    // Optional: Send message back to WeWeb if needed
+    window.parent.postMessage({ type: "RESPONSE", data: "Iframe is ready!" }, "*");
+  </script>
+</body>
+</html>
